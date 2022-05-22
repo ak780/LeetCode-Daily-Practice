@@ -12,14 +12,14 @@ public:
         };
         vector<pair<int,int>> directions{{1,0},{0,1},{-1,0},{0,-1}};
         // vis[H][W]
-        // vector<vector<bool>> vis(H, vector<bool>(W));
+        vector<vector<bool>> vis(H, vector<bool>(W));
         for(int row = 0; row < H; row++) {
             for(int col = 0; col < W; col++) {
-                if( grid[row][col] == '1') {
+                if(!vis[row][col] && grid[row][col] == '1') {
                     answer++;
                     queue<pair<int,int>> q;
                     q.push({row, col});
-                    grid[row][col] = '0';
+                    vis[row][col] = true;
                     while(!q.empty()) {
                         pair<int,int> p = q.front();
                         q.pop();
@@ -27,9 +27,9 @@ public:
                         for(pair<int,int> dir : directions) {
                             int new_row = p.first + dir.first;
                             int new_col = p.second + dir.second;
-                            if(inside(new_row, new_col) && grid[new_row][new_col] == '1') {
+                            if(inside(new_row, new_col) && !vis[new_row][new_col] && grid[new_row][new_col] == '1') {
                                 q.push({new_row, new_col});
-                                grid[new_row][new_col] = '0';
+                                vis[new_row][new_col] = true;
                             }
                         }
                     }
