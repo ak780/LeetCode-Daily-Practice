@@ -1,7 +1,7 @@
 class Solution {
 public:           
     vector<vector<int>> vec;
-    void helper(int n, int k, vector<int> temp)
+    void helper(int n, int k, vector<int>& temp)
     {
         for(int i=1;i<=n;i++)
         {
