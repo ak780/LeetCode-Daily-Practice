@@ -1,7 +1,8 @@
 class Solution {
 public:           
     vector<vector<int>> vec;
-    void helper(int n, int k, vector<int>& temp)
+    vector<int> temp;
+    void helper(int n, int k)
     {
         for(int i=1;i<=n;i++)
         {
@@ -13,18 +14,17 @@ public:
             else if(temp.size()>=1 && temp[temp.size()-1]>=i)
                 continue;
             temp.push_back(i);
-            helper(n,k,temp);
+            helper(n,k);
             temp.pop_back();
         }
         // vec.push_back(temp);
         return;
     }
-    vector<vector<int>> combine(int n, int k) {   
-        vector<int> temp;            
+    vector<vector<int>> combine(int n, int k) {               
         // vector<vector<int>> vec1;
 
 
-        helper(n,k,temp);
+        helper(n,k);
         return vec;
     }
 };
