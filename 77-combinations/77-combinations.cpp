@@ -2,19 +2,17 @@ class Solution {
 public:           
     vector<vector<int>> vec;
     vector<int> temp;
-    void helper(int n, int k)
+    void helper(int n, int k, int start)
     {
-        for(int i=1;i<=n;i++)
+        for(int i=start;i<=n+1;i++)
         {
              if(temp.size() == k)
              {
                  vec.push_back(temp);
                 return;
              }
-            else if(temp.size()>=1 && temp[temp.size()-1]>=i)
-                continue;
             temp.push_back(i);
-            helper(n,k);
+            helper(n,k,i+1);
             temp.pop_back();
         }
         // vec.push_back(temp);
@@ -24,7 +22,7 @@ public:
         // vector<vector<int>> vec1;
 
 
-        helper(n,k);
+        helper(n,k,1);
         return vec;
     }
 };
