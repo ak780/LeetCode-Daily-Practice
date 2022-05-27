@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    map<int,int> mp;
+    unordered_map<int,int> mp;
     int climbStairs(int n) {
         if(mp.find(n) != mp.end())
             return(mp[n]);
